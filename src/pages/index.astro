@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { Code, Divider, Image, Link } from '@nextui-org/react'
+import { Button, Code, Divider, Image, Link } from '@nextui-org/react'
 ---
 
 <Layout title='Gymkana - Aroche'>
@@ -27,11 +27,20 @@ import { Code, Divider, Image, Link } from '@nextui-org/react'
 			</p>
 		</div>
 	</div>
-	<div>
-		<p>
+	<div class="my-5">
+		<p class="mb-3">
 			Estamos entusiasmados por vuestra participación en esta especcie de Quizz
 		</p>
-		<Link href='/gymkana'>Ir a la gymkana</Link>
+		<Button
+		href='/gymkana'
+		as={Link}
+		color='primary'
+		showAnchorIcon
+		variant='solid'
+		className='my-4'
+	>
+	Ir a la gymkana
+	</Button>
 	</div>
 	<Code color='warning'>Esto es un concepto de desarrollo. No están implementadas la lógica interna<br></Code>
 	<style>
