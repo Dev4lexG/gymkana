@@ -1,0 +1,64 @@
+---
+import LinearBar from './LinearBar.astro'
+---
+
+<header>
+	<div class='heading expanded'>
+		<div class='title'>
+			<h1>
+				<span>Gymkana</span>de Aroche
+			</h1>
+		</div>
+		<div class='image'>
+			<img src='/images/aroche.svg' width='90px' height='90px' />
+		</div>
+	</div>
+	<LinearBar />
+</header>
+
+<style>
+	header {
+		position: sticky;
+		background-image: url(https://www.canalsur.es/resources/archivos_offline/2020/8/24/1598265527980aroche.jpg);
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	header:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: linear-gradient(45deg, #060606a8, #17003387);
+		z-index: -1;
+	}
+
+	.heading {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+	}
+
+	.title,
+	.image {
+	}
+
+	h1 {
+		margin: 0;
+		color: aliceblue;
+		font-family: 'Tanker-Regular';
+		letter-spacing: 4px;
+		font-weight: 500;
+		line-height: 35px;
+		font-size: 32px;
+	}
+
+	span {
+		font-size: 38px;
+		display: block;
+	}
+</style>

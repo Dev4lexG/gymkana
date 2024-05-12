@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { Code, Divider, Image, Link } from '@nextui-org/react'
+---
+
+<Layout title='Gymkana - Aroche'>
+	<div class='flex flex-row gap-5 flex-wrap md:flex-nowrap'>
+		<div class='w-full md:w-[50%] flex flex-col justify-center'>
+			<Image
+				client:visible
+				isZoomed
+				isBlurred
+				src='https://multimedia.andalucia.org/media/30C5694873514DF5BFE17164EAF1B940/img/DB9CD87942134060B4FA27A391DD1777/1625567908379Aroche_13902012265522045281.jpg'
+				alt='Pueblo de Aroche'
+			/>
+		</div>
+		<div class='md:w-[50%] flex flex-col justify-center'>
+			<h1>Bienvenid@s a la <span>Gymkana</span>👋</h1>
+			<p>
+				¡Bienvenidos a la gymkana digital de Aroche! ¿Estás listo para
+				embarcarte en una emocionante aventura turística a través de las calles
+				empedradas y los tesoros históricos de este encantador pueblo? Nuestra
+				gymkana te invita a descubrir Aroche de una manera divertida e
+				interactiva, combinando desafíos digitales con la rica historia y
+				belleza de este lugar. ¡Prepárate para explorar, aprender y disfrutar al
+				máximo!
+			</p>
+		</div>
+	</div>
+	<div>
+		<p>
+			Estamos entusiasmados por vuestra participación en esta especcie de Quizz
+		</p>
+		<Link href='/gymkana'>Ir a la gymkana</Link>
+	</div>
+	<Code color='warning'>Esto es un concepto de desarrollo. No están implementadas la lógica interna<br></Code>
+	<style>
+		h1 {
+			font-size: 35px;
+		}
+	</style>
+</Layout>

@@ -1,0 +1,36 @@
+---
+import AccordionWrapper from '@/components/AccordionWrapper'
+import Layout from '@/layouts/Layout.astro'
+import { Button, Code, Link } from '@nextui-org/react'
+---
+
+<Layout title='Inicio - Gymkana'>
+	<h1 class="text-3xl">Sobre la gymkana</h1>
+	<p>
+		Texto explicativo sobre la gymkana, actividades que se van a hacer,
+		funcionamiento etc.
+	</p>
+	<h2 class="mt-4 text-2xl">¿Qué temas vamos a tocar en esta gymkana? 😁</h2>
+
+	<AccordionWrapper client:visible />
+
+	<h4 class="text-xl">Te estamos esperando!</h4>
+
+	<Button
+		href='/gymkana/1'
+		as={Link}
+		color='primary'
+		showAnchorIcon
+		variant='solid'
+		className='my-4'
+	>
+		Comenzar
+	</Button>
+	<br />
+	{
+		(
+			//@ts-ignore}
+			<Code color='warning'>*Extructurar diseño y añadir imágenes*</Code>
+		)
+	}</Layout
+>
