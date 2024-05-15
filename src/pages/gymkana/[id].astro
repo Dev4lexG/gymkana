@@ -4,6 +4,7 @@ import { Image } from '@nextui-org/react'
 import { Selection } from '@/components/NextUIWrapper'
 import { config as q } from '@/utils/config'
 import { randomize } from '@/utils/randomize'
+import FormComponent from '@/components/FormComponent'
 
 export function getStaticPaths() {
 	return q.map((section, index) => {
@@ -23,15 +24,6 @@ console.table(q[0].questions[0].expected)
 	<p>{s.explanation}</p>
 	<h3>¡Vamos a por esas preguntas! 😁</h3>
 	<form>
-		{
-			randomize(s.questions).map((q, index) => {
-				return (
-					<div class='mt-4'>
-						<label class='mx-3'>{q.question /* TODO: Dificultad */}</label>
-						<Selection question={q} id={index} client:visible />
-					</div>
-				)
-			})
-		}
+		<FormComponent s={s} client:visible />
 	</form>
 </Layout>
