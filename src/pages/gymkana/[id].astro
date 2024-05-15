@@ -1,0 +1,37 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { Image } from '@nextui-org/react'
+import { Selection } from '@/components/NextUIWrapper'
+import { config as q } from '@/utils/config'
+import { randomize } from '@/utils/randomize'
+
+export function getStaticPaths() {
+	return q.map((section, index) => {
+		return { params: { id: ++index } }
+	})
+}
+
+const { id } = Astro.params
+const s = q[id - 1]
+
+console.table(q[0].questions[0].expected)
+---
+
+<Layout title={'Gymkana - ' + s.section}>
+	<h1 class='text-7xl'>{s.section}</h1>
+	<Image src='' />
+	<p>{s.explanation}</p>
+	<h3>¡Vamos a por esas preguntas! 😁</h3>
+	<form>
+		{
+			randomize(s.questions).map((q, index) => {
+				return (
+					<div class='mt-4'>
+						<label class='mx-3'>{q.question /* TODO: Dificultad */}</label>
+						<Selection question={q} id={index} client:visible />
+					</div>
+				)
+			})
+		}
+	</form>
+</Layout>

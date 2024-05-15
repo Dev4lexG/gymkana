@@ -1,5 +1,6 @@
 ---
-import AccordionWrapper from '@/components/AccordionWrapper'
+import { AccordionWrapper } from '@/components/NextUIWrapper'
+import gymkana from '@/gymkana.json'
 import Layout from '@/layouts/Layout.astro'
 import { Button, Code, Link } from '@nextui-org/react'
 ---
@@ -12,7 +13,7 @@ import { Button, Code, Link } from '@nextui-org/react'
 	</p>
 	<h2 class="mt-4 text-2xl">¿Qué temas vamos a tocar en esta gymkana? 😁</h2>
 
-	<AccordionWrapper client:visible />
+	<AccordionWrapper client:visible sections={gymkana} />
 
 	<h4 class="text-xl">Te estamos esperando!</h4>
 
