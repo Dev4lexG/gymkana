@@ -3,21 +3,30 @@ import LinearBar from './LinearBar.astro'
 ---
 
 <header>
-	<div class='heading expanded'>
-		<div class='title'>
-			<h1>
-				<span>Gymkana</span>de Aroche
-			</h1>
+	<div class='headingc expanded'>
+		<div class='aaa'><a href='/'>Inicio</a></div>
+		<div class='heading'>
+			<div class='title'>
+				<h1>
+					<span>Gymkana</span>de Aroche
+				</h1>
+			</div>
+			<div class='image'>
+				<img src='/images/aroche.svg' width='90px' height='90px' />
+			</div>
 		</div>
-		<div class='image'>
-			<img src='/images/aroche.svg' width='90px' height='90px' />
-		</div>
+		<div class='aaa'><a href='/gymkana'>Gymkana</a></div>
+	</div>
+	<div class='headingc n'>
+		<div><a href='/'>Inicio</a></div>
+		<div><a href='/gymkana'>Gymkana</a></div>
 	</div>
 	<LinearBar />
 </header>
 
 <style>
 	header {
+		font-family: 'Tanker-Regular';
 		position: sticky;
 		background-image: url(https://www.canalsur.es/resources/archivos_offline/2020/8/24/1598265527980aroche.jpg);
 		background-position: center;
@@ -42,6 +51,30 @@ import LinearBar from './LinearBar.astro'
 		justify-content: center;
 		padding: 10px;
 	}
+	.n {
+		display: none !important;
+		margin-top: -20px;
+	}
+
+	@media (max-width: 505px) {
+		.aaa {
+			display: none;
+		}
+
+		.n {
+			display: flex !important;
+		}
+	}
+
+	.headingc {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 50px;
+		justify-content: center;
+		padding: 10px;
+		font-size: 22px;
+	}
 
 	.title,
 	.image {
@@ -50,7 +83,6 @@ import LinearBar from './LinearBar.astro'
 	h1 {
 		margin: 0;
 		color: aliceblue;
-		font-family: 'Tanker-Regular';
 		letter-spacing: 4px;
 		font-weight: 500;
 		line-height: 35px;

@@ -14,7 +14,7 @@ import { Button, Code, Divider, Image, Link } from '@nextui-org/react'
 				alt='Pueblo de Aroche'
 			/>
 		</div>
-		<div class='md:w-[50%] flex flex-col justify-center'>
+		<div class='md:w-[50%] flex flex-col justify-center text-justify'>
 			<h1>Bienvenid@s a la <span>Gymkana</span>👋</h1>
 			<p>
 				¡Bienvenidos a la gymkana digital de Aroche! ¿Estás listo para
@@ -27,22 +27,22 @@ import { Button, Code, Divider, Image, Link } from '@nextui-org/react'
 			</p>
 		</div>
 	</div>
-	<div class="my-5">
-		<p class="mb-3">
-			Estamos entusiasmados por vuestra participación en esta especcie de Quizz
+	<div class='my-5'>
+		<p class='mb-3 mx-auto'>
+			Estamos entusiasmados por vuestra participación en esta especie de Quizz
 		</p>
-		<Button
-		href='/gymkana'
-		as={Link}
-		color='primary'
-		showAnchorIcon
-		variant='solid'
-		className='my-4'
-	>
-	Ir a la gymkana
-	</Button>
+		<div class='flex flex-col justify-center'>
+			<Button
+				href='/gymkana'
+				as={Link}
+				color='primary'
+				variant='solid'
+				className='my-4 mx-auto w-40'
+			>
+				Ir a la gymkana
+			</Button>
+		</div>
 	</div>
-	<Code color='warning'>Esto es un concepto de desarrollo. No están implementadas la lógica interna<br></Code>
 	<style>
 		h1 {
 			font-size: 35px;

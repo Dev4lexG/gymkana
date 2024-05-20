@@ -1,4 +1,5 @@
 export interface Section {
+	urlName: string
 	section: string
 	image?: string
 	intro?: string

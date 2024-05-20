@@ -1,0 +1,32 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { Image } from '@nextui-org/react'
+import { gymkana as q } from '@/utils/config'
+import FormComponent from '@/components/FormComponent'
+import SectionPagination from '@/components/SectionPagination'
+import normalize from '@/utils/normalize'
+
+export function getStaticPaths() {
+	return q.map(({ urlName }, index) => {
+		return { params: { name: urlName } }
+	})
+}
+
+const { name } = Astro.params
+
+const id = q.findIndex(({ urlName }) => urlName === normalize(name))
+
+const s = q[id]
+---
+
+<Layout title={'Gymkana - ' + s.section}>
+	<h1 class='text-7xl'>{s.section}</h1>
+	<Image src='' />
+	<p>{s.intro}</p>
+	<h3>¡Vamos a por esas preguntas! 😁</h3>
+	<form>
+		<FormComponent s={s} client:only />
+		<br />
+		<SectionPagination current={id} />
+	</form>
+</Layout>

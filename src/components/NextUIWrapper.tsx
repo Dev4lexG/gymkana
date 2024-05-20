@@ -1,5 +1,7 @@
+import normalize from '@/utils/normalize';
 import { randomize } from '@/utils/randomize';
 import { Select, SelectItem, Accordion, AccordionItem, Code, Divider } from '@nextui-org/react';
+import { useState } from 'react';
 
 interface Question {
     question: string,
@@ -13,17 +15,52 @@ interface Selection extends Question {
 }
 
 
-export function Selection({ question: q, id: i }: { question: Selection, id: number }) {
+export function Selection({ question: q, section: s }: { question: Selection, section: string }) {
+
+    const localData = JSON.parse(localStorage.getItem(s) || '')
+
+    if (!('answers' in localData)) {
+        localData['answers'] = {}
+    }
+
+    const answersData = localData['answers']
+
+
+    const changeCallback = (e: React.ChangeEvent<HTMLSelectElement>) => {
+
+        const localData1 = JSON.parse(localStorage.getItem(s) || '')
+
+        if (!('answers' in localData1)) {
+            localData1['answers'] = {}
+        }
+
+        const answersData1 = localData1['answers']
+
+        const labelData = e.target.value.split('-')
+        const [key, value] = labelData
+
+        answersData1[key] = value
+
+        localStorage.setItem(s, JSON.stringify(localData1))
+    }
+
+
+
+
     return (
         <Select
             isRequired={q.required ?? true}
             placeholder={q.placeholder ?? 'Selecciona una opción'}
             className='max-w-xs mt-1'
             aria-label={q.question}
+            key={normalize(q.question)}
+            defaultSelectedKeys={answersData[normalize(q.question)] ? [normalize(q.question) + '-' + answersData[normalize(q.question)]] : ''}
+
+            onChange={changeCallback}
         >
             {randomize(q.answers).map((answer, index) => {
                 return (
-                    <SelectItem key={i + '-' + index} value={answer} >
+                    <SelectItem key={normalize(q.question) + '-' + normalize(answer)} value={answer} >
                         {answer}
                     </SelectItem>
                 )
