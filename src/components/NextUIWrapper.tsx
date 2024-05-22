@@ -1,6 +1,6 @@
 import normalize from '@/utils/normalize';
 import { randomize } from '@/utils/randomize';
-import { Select, SelectItem, Accordion, AccordionItem, Code, Divider } from '@nextui-org/react';
+import { Select, SelectItem, Accordion, AccordionItem, Code, Divider, Button, Link } from '@nextui-org/react';
 import { useState } from 'react';
 
 interface Question {
@@ -75,6 +75,7 @@ type AccQuestion = Omit<Question, 'answers'>
 interface Accordion {
     section: string
     questions: Array<AccQuestion>
+    urlName: string
     comment?: string
 }
 
@@ -101,6 +102,14 @@ export function AccordionWrapper({ sections: q }: { sections: Array<Accordion> }
                                 <Code color='secondary' /* TODO: Colores diferentes */ >{s.comment}</Code>
                             </>
                         )}
+                        <Button
+                            as={Link}
+                            color="primary"
+                            href={'/gymkana/' + s.urlName}
+                            variant="flat"
+                        >
+                            Empezar {s.section.toLowerCase()}
+                        </Button>
                     </AccordionItem>
                 )
             })}
