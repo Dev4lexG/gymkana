@@ -7,6 +7,8 @@ interface Question {
     question: string,
     difficulty: number,
     answers: Array<string>
+
+    expected: Array<String>
 }
 
 interface Selection extends Question {
@@ -15,7 +17,7 @@ interface Selection extends Question {
 }
 
 
-export function Selection({ question: q, section: s }: { question: Selection, section: string }) {
+export function Selection({ question: q, section: s, isCorrect }: { question: Selection, section: string, isCorrect: boolean }) {
 
     const localData = JSON.parse(localStorage.getItem(s) || '')
 
@@ -47,25 +49,31 @@ export function Selection({ question: q, section: s }: { question: Selection, se
 
 
 
-    return (
-        <Select
-            isRequired={q.required ?? true}
-            placeholder={q.placeholder ?? 'Selecciona una opción'}
-            className='max-w-xs mt-1'
-            aria-label={q.question}
-            key={normalize(q.question)}
-            defaultSelectedKeys={answersData[normalize(q.question)] ? [normalize(q.question) + '-' + answersData[normalize(q.question)]] : ''}
 
-            onChange={changeCallback}
-        >
-            {randomize(q.answers).map((answer, index) => {
-                return (
-                    <SelectItem key={normalize(q.question) + '-' + normalize(answer)} value={answer} >
-                        {answer}
-                    </SelectItem>
-                )
-            })}
-        </Select>
+    console.log(isCorrect)
+
+    return (
+        <>
+            <Select
+                isRequired={q.required ?? true}
+                placeholder={q.placeholder ?? 'Selecciona una opción'}
+                className='max-w-xs mt-1'
+                aria-label={q.question}
+                color={isCorrect ? 'success' : isCorrect == undefined ? 'default' : 'danger'}
+                key={normalize(q.question)}
+                defaultSelectedKeys={answersData[normalize(q.question)] ? [normalize(q.question) + '-' + answersData[normalize(q.question)]] : ''}
+
+                onChange={changeCallback}
+            >
+                {randomize(q.answers).map((answer, index) => {
+                    return (
+                        <SelectItem key={normalize(q.question) + '-' + normalize(answer)} value={answer} >
+                            {answer}
+                        </SelectItem>
+                    )
+                })}
+            </Select>
+        </>
     )
 }
 
