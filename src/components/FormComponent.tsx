@@ -121,7 +121,10 @@ function FormComponent({ s }: { s: Section }) {
         {currentQuestions.map((q, index) => (
           <div className='mt-4' key={index}>
             <label className=''>{q.question /* TODO: Dificultad */}</label>
-            <Selection question={q} section={s.urlName} isCorrect={validationData[normalize(q.question)]} />
+            <Selection question={q} section={s.urlName} isCorrect={
+              // @ts-expect-error
+              validationData[normalize(q.question)]
+            } />
           </div>
         ))}
       </form>
