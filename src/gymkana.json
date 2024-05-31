@@ -34,7 +34,7 @@
 		"explanation": "",
 		"questions": [
 			{
-				"question": "¿Como se llama el famoso festival que se celebra a finales de junio?",
+				"question": "¿Como se llama el famoso festival que se celebra a finales de julio?",
 				"answers": [
 					"*Festival de Diana",
 					"Carnaval de verano",
@@ -68,7 +68,7 @@
 			},
 			{
 				"question": "¿Cuando se hace la plaza de toros?",
-				"answers": ["*1902 ", "1940", "1540"],
+				"answers": ["*1802 ", "1940", "1540"],
 				"difficulty": 2
 			},
 			{
