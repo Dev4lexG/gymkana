@@ -40,7 +40,6 @@ function FormComponent({ s }: { s: Section }) {
   const indexOfFirstQuestion = indexOfLastQuestion - questionsPerPage
   const currentQuestions = s.questions.slice(indexOfFirstQuestion, indexOfLastQuestion)
 
-  console.log(currentQuestions)
 
   const totalPages = Math.ceil(s.questions.length / questionsPerPage)
 
@@ -66,7 +65,6 @@ function FormComponent({ s }: { s: Section }) {
       section: s.urlName,
       answers: answersData1
     }
-
 
 
     if (action === 'next' && page < totalPages) {
@@ -98,10 +96,16 @@ function FormComponent({ s }: { s: Section }) {
       setValidationData(data)
 
       if (Object.values(currr).some(value => Boolean(!value))) {
-        console.log(currr)
+        localStorage.removeItem('finish_' + s.urlName + '_')
         return
       }
 
+      if (action === 'next' && page == totalPages) {
+        setTimeout(() => {
+          localStorage.setItem('finish_' + s.urlName + '_', '1')
+          window.location.href = '/gymkana'
+        }, 1000)
+      }
 
       setCurrentPage(page)
       const data1 = JSON.parse(localStorage.getItem(s.urlName) || '')
@@ -128,22 +132,31 @@ function FormComponent({ s }: { s: Section }) {
           </div>
         ))}
       </form>
-      {totalPages !== 1 && (<div className='flex flex-row items-center  mt-4  justify-center gap-2'>
+      <div className='flex flex-row items-center  mt-4  justify-center gap-2'>
+        {totalPages !== 1 && (
+          <>
 
+            <Button onPress={() => handlePageChange(currentPage, 'prev')} className='min-w-6' disabled={currentPage == 1}><span dangerouslySetInnerHTML={{ __html: svg.back }}></span></Button>
 
-        <Button onPress={() => handlePageChange(currentPage, 'prev')} className='min-w-6' disabled={currentPage == 1}><span dangerouslySetInnerHTML={{ __html: svg.back }}></span></Button>
+            <Pagination
+              isCompact
+              total={totalPages}
+              isDisabled
+              initialPage={currentPage}
+              page={currentPage}
+              className='w-[fit-content] opacity-100'
+            />
 
-        <Pagination
-          isCompact
-          total={totalPages}
-          isDisabled
-          initialPage={currentPage}
-          page={currentPage}
-          className='w-[fit-content] opacity-100'
-        />
+          </>
 
-        <Button onPress={() => handlePageChange(currentPage, 'next')} className='min-w-6' disabled={currentPage == totalPages}><span dangerouslySetInnerHTML={{ __html: svg.to }}></span></Button>
-      </div>)}
+        )}
+        <Button
+          onPress={() => handlePageChange(currentPage, 'next')}
+          className='min-w-6'>
+          <span dangerouslySetInnerHTML={{ __html: currentPage == totalPages ? 'Finalizar' : svg.to }}>
+          </span>
+        </Button>
+      </div>
     </>
   )
 }

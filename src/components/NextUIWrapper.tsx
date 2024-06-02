@@ -46,12 +46,6 @@ export function Selection({ question: q, section: s, isCorrect }: { question: Se
         localStorage.setItem(s, JSON.stringify(localData1))
     }
 
-
-
-
-
-    console.log(isCorrect)
-
     return (
         <>
             <Select
@@ -59,7 +53,7 @@ export function Selection({ question: q, section: s, isCorrect }: { question: Se
                 placeholder={q.placeholder ?? 'Selecciona una opción'}
                 className='max-w-xs mt-1'
                 aria-label={q.question}
-                color={isCorrect ? 'success' : isCorrect == undefined ? 'default' : 'danger'}
+                color={isCorrect ? 'success' : isCorrect == undefined ? 'warning' : 'danger'}
                 key={normalize(q.question)}
                 defaultSelectedKeys={answersData[normalize(q.question)] ? [normalize(q.question) + '-' + answersData[normalize(q.question)]] : ''}
 
@@ -91,10 +85,15 @@ export function AccordionWrapper({ sections: q }: { sections: Array<Accordion> }
     return (
         <Accordion variant="bordered" className='my-4'>
             {q.map((s, index) => {
+                const completed = localStorage.getItem('finish_' + s.urlName + '_') == '1'
                 return (
                     <AccordionItem key={index} aria-label={s.section} title={s.section}
                         startContent={'|' /* TODO: color */}
-                        subtitle={'Difucultad promedio ' /* TODO: color  y tipo de dificultad */}
+                        classNames={{
+                            subtitle: completed ? "text-success" : "text-warning",
+                            startContent: completed ? "text-success" : "text-warning"
+                        }}
+                        subtitle={completed ? 'Completado' : 'Incompletado'}
                     >
                         Preguntas:
                         <ul className='list-disc pl-5 mt-1 mb-3'>
@@ -112,11 +111,11 @@ export function AccordionWrapper({ sections: q }: { sections: Array<Accordion> }
                         )}
                         <Button
                             as={Link}
-                            color="primary"
+                            color={completed ? "success" : "warning"}
                             href={'/gymkana/' + s.urlName}
                             variant="flat"
                         >
-                            Empezar {s.section.toLowerCase()}
+                            {completed ? "Editar" : "Empezar"} {s.section.toLowerCase()}
                         </Button>
                     </AccordionItem>
                 )
