@@ -100,7 +100,7 @@ function FormComponent({ s }: { s: Section }) {
         return
       }
 
-      if (action === 'next' && page == totalPages) {
+      if (action === 'next' && currentPage == totalPages) {
         setTimeout(() => {
           localStorage.setItem('finish_' + s.urlName + '_', '1')
           window.location.href = '/gymkana'
