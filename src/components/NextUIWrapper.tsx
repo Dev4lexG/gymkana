@@ -93,7 +93,7 @@ export function AccordionWrapper({ sections: q }: { sections: Array<Accordion> }
                             subtitle: completed ? "text-success" : "text-warning",
                             startContent: completed ? "text-success" : "text-warning"
                         }}
-                        subtitle={completed ? 'Completado' : 'Incompletado'}
+                        subtitle={completed ? 'Completado' : 'Incompleto'}
                     >
                         Preguntas:
                         <ul className='list-disc pl-5 mt-1 mb-3'>
