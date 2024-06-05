@@ -3,9 +3,11 @@ import { AccordionWrapper } from '@/components/NextUIWrapper'
 import { gymkana as q } from '@/utils/config'
 import Layout from '@/layouts/Layout.astro'
 import { Button, Code, Link } from '@nextui-org/react'
+import { Popup } from '@/components/Popup'
 ---
 
 <Layout title='Inicio - Gymkana'>
+	<Popup client:only />
 	<h1 class='text-3xl'>Sobre la gymkana</h1>
 	<p>
 		Texto explicativo sobre la gymkana, actividades que se van a hacer,

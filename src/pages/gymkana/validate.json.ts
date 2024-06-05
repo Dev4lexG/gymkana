@@ -9,7 +9,7 @@ export const POST: APIRoute = async ({ request }) => {
 	if (request.headers.get('Content-Type') === 'application/json') {
 		const body = await request.json()
 
-		const UID = body.uid || ''
+		const INFO = body.info || ''
 		const SECTION = body.section || ''
 		const ANSWERS = body.answers || {}
 

@@ -1,10 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import { Image } from '@nextui-org/react'
 import { gymkana as q } from '@/utils/config'
-import FormComponent from '@/components/FormComponent'
-import SectionPagination from '@/components/SectionPagination'
 import normalize from '@/utils/normalize'
+import Form from '@/components/Form'
 
 export function getStaticPaths() {
 	return q.map(({ urlName }, index) => {
@@ -20,11 +18,5 @@ const s = q[id]
 ---
 
 <Layout title={'Gymkana - ' + s.section}>
-	<h1 class='text-6xl'>{s.section}</h1>
-	<Image src='' />
-	<p>{s.intro}</p>
-	<h3>¡Vamos a por esas preguntas! 😁</h3>
-	<FormComponent s={s}  client:only />
-	<br />
-	<SectionPagination current={id} />
+	<Form client:only s={s} id={id} />
 </Layout>

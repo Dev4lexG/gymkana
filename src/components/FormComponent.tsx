@@ -18,7 +18,19 @@ const svg = {
   to: `<svg aria-hidden="true" fill="none" focusable="false" height="1em" role="presentation" viewBox="0 0 24 24" width="1em" class="rotate-180"><path d="M15.5 19l-7-7 7-7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>`
 }
 
-function FormComponent({ s }: { s: Section }) {
+function check(obj: object) {
+  const keys = ['uid', 'participantes', 'edad-promedio', 'motivacion'];
+  return keys.every(key => key in obj);
+
+}
+
+function FormComponent({ s, click }: { s: Section, click: any }) {
+
+  useEffect(() => {
+    handlePageChange(currentPage, 'next')
+  }, [click])
+
+  const id = localStorage.getItem('info') ? JSON.parse(localStorage.getItem('info') || '') : ''
 
   const aas = {
     page: 1,
@@ -49,6 +61,9 @@ function FormComponent({ s }: { s: Section }) {
 
 
   const handlePageChange = (page: number, action: string) => {
+    if (!id) return
+
+    if (!check(id)) return
 
     const localData1 = JSON.parse(localStorage.getItem(s.urlName) || '')
 
@@ -61,9 +76,9 @@ function FormComponent({ s }: { s: Section }) {
 
 
     const fData = {
-      uid: '',
       section: s.urlName,
-      answers: answersData1
+      answers: answersData1,
+      info: localStorage.getItem('info')
     }
 
 
