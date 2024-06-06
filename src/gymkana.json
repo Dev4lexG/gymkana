@@ -6,22 +6,22 @@
 		"explanation": "",
 		"questions": [
 			{
-				"question": "¿Cuál es la sopa típica de aroche?",
+				"question": "¿Cuál es la sopa típica de Aroche?",
 				"answers": ["*Sopa de peso", "Potaje", "Patatas cocidas"],
 				"difficulty": 1
 			},
 			{
 				"question": "Producto de chacina típica de Aroche",
-				"answers": ["*Salchicha Arochena", "Morcon", "Salchichon"],
+				"answers": ["*Salchicha Arochena", "Morcón", "Salchichón"],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Cual es el fruto rojo de recolección mas comun en aroche?",
-				"answers": ["Fresa", "Cereza", "*Arandano"],
+				"question": "¿Cuál es el fruto rojo de recolección más común en Aroche?",
+				"answers": ["Fresa", "Cereza", "*Arándano"],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Que marca de patatas fabricadas en la localidad son conocidas a nivel regional?",
+				"question": "¿Qué marca de patatas fabricadas en la localidad son conocidas a nivel regional?",
 				"answers": ["*Patatas el Mellao", "Patatas Luis", "Patatas Pepi"],
 				"difficulty": 3
 			}
@@ -34,7 +34,7 @@
 		"explanation": "",
 		"questions": [
 			{
-				"question": "¿Como se llama el famoso festival que se celebra a finales de julio?",
+				"question": "¿Cómo se llama el famoso festival que se celebra a finales de julio?",
 				"answers": [
 					"*Festival de Diana",
 					"Carnaval de verano",
@@ -43,37 +43,37 @@
 				"difficulty": 1
 			},
 			{
-				"question": "¿A quien estaba dedicado el templo del foro de turobriga?",
-				"answers": ["*Apolo y Diana", "Conde del Alamo", "Juan Carlos I"],
+				"question": "¿A quién estaba dedicado el templo del foro de Turobriga?",
+				"answers": ["*Apolo y Diana", "Conde del Álamo", "Juan Carlos I"],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Que fiesta nocturna se celebra de noche en los alrededores del castillo en Agosto?",
+				"question": "¿Qué fiesta nocturna se celebra de noche en los alrededores del castillo en agosto?",
 				"answers": [
 					"*La noche de las velas",
 					"Carnaval de verano",
-					"Festival de diana"
+					"Festival de Diana"
 				],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Donde hay un reloj de sol?",
-				"answers": ["*Iglesia ", "Ayuntamiento", "Castillo"],
+				"question": "¿Dónde hay un reloj de sol?",
+				"answers": ["*Iglesia", "Ayuntamiento", "Castillo"],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Con que ciudad comparte nombre el estadio de futbol de nuestro pueblo?",
-				"answers": ["*Bilbao ", "Malaga", "Madrid"],
+				"question": "¿Con qué ciudad comparte nombre el estadio de fútbol de nuestro pueblo?",
+				"answers": ["*Bilbao", "Málaga", "Madrid"],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Cuando se hace la plaza de toros?",
-				"answers": ["*1802 ", "1940", "1540"],
+				"question": "¿Cuándo se hace la plaza de toros?",
+				"answers": ["*1802", "1940", "1540"],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Cual es el baile típico de Aroche?",
-				"answers": ["*La jotilla ", "sevillana", "fandango"],
+				"question": "¿Cuál es el baile típico de Aroche?",
+				"answers": ["*La jotilla", "Sevillana", "Fandango"],
 				"difficulty": 2
 			},
 			{
@@ -83,7 +83,6 @@
 			}
 		]
 	},
-
 	{
 		"section": "Espacios naturales",
 		"image": "",
@@ -91,16 +90,16 @@
 		"explanation": "",
 		"questions": [
 			{
-				"question": "Arboles que abundan en Aroche",
+				"question": "Árboles que abundan en Aroche",
 				"answers": [
 					"*Encina y alcornoque",
-					"chumbera y roble",
+					"Chumbera y roble",
 					"Nogal y eucalipto"
 				],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Cuantos parajes naturales rodean Aroche?",
+				"question": "¿Cuántos parajes naturales rodean Aroche?",
 				"answers": ["*2", "4", "5"],
 				"difficulty": 2
 			},
@@ -110,12 +109,12 @@
 				"difficulty": 2
 			},
 			{
-				"question": "Que colonia de ave se encuentra en Aroche siendo de las mas grandes de Europa",
-				"answers": ["*Buitre Negro", "Aguila Real", "Buho común"],
+				"question": "¿Qué colonia de ave se encuentra en Aroche siendo de las más grandes de Europa?",
+				"answers": ["*Buitre negro", "Águila real", "Búho común"],
 				"difficulty": 2
 			},
 			{
-				"question": "¿En que Parque natural se encuentra Aroche?",
+				"question": "¿En qué parque natural se encuentra Aroche?",
 				"answers": [
 					"*Sierra de Aracena y Picos de Aroche",
 					"Sierra de Aroche y Picos de Aracena",
@@ -124,17 +123,17 @@
 				"difficulty": 2
 			},
 			{
-				"question": "Aroche linda con 7 pueblos. ¿Cuales son?",
+				"question": "Aroche linda con 7 pueblos. ¿Cuáles son?",
 				"answers": [
-					"*Encinasola, La nava, Cumbres de San Bartolomé, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera.",
-					"Encinasola, La nava, Aracena, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera.",
-					"Encinasola, La nava, Lepe, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera."
+					"*Encinasola, La Nava, Cumbres de San Bartolomé, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera",
+					"Encinasola, La Nava, Aracena, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera",
+					"Encinasola, La Nava, Lepe, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera"
 				],
 				"difficulty": 2
 			},
 			{
-				"question": "¿Cual es el pico mas alto del termino de Aroche?",
-				"answers": ["*Pico Ballesteros.", "Pico del buitre.", "Las peñas"],
+				"question": "¿Cuál es el pico más alto del término de Aroche?",
+				"answers": ["*Pico Ballesteros", "Pico del Buitre", "Las Peñas"],
 				"difficulty": 2
 			}
 		]
