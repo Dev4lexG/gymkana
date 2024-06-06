@@ -64,10 +64,12 @@ export const POST: APIRoute = async ({ request }) => {
 
 		console.log(data)
 
+		/*
 		fs.writeFileSync(
 			path.resolve('gymkana_analitycs.json'),
 			JSON.stringify(data, null, 2),
 		)
+  		*/
 
 		return new Response(JSON.stringify(response), {
 			headers: {
