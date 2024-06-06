@@ -104,11 +104,6 @@
 				"difficulty": 2
 			},
 			{
-				"question": "Nombre de la reina mora de nuestro castillo",
-				"answers": ["*Saluquia", "Kama", "Kiya"],
-				"difficulty": 2
-			},
-			{
 				"question": "¿Qué colonia de ave se encuentra en Aroche siendo de las más grandes de Europa?",
 				"answers": ["*Buitre negro", "Águila real", "Búho común"],
 				"difficulty": 2
