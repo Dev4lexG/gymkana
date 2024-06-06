@@ -11,30 +11,37 @@ function generateUID(length: number): string {
     return result;
 }
 
-function check(obj: object) {
-    const keys = ['uid', 'participantes', 'edad-promedio', 'motivacion'];
+function check(obj: object | string) {
+    if (typeof (obj) == 'string')
+        obj = {}
+    const keys = ['uid', 'participantes', 'edad-promedio', 'motivacion', 'origen'];
     return keys.every(key => key in obj);
 
 }
 
 export function Popup() {
-    function setStorage(key: string, value: string) {
-        const st = JSON.parse(localStorage.getItem('info') || '')
-
-        st[key] = value
-
-        localStorage.setItem('info', JSON.stringify(st))
-    }
     let open = true
 
     const st = localStorage.getItem('info') ? JSON.parse(localStorage.getItem('info') || '') : ''
+
+    function setStorage(key: string, value: string) {
+        st[key] = value
+        reRandom(!random)
+        localStorage.setItem('info', JSON.stringify(st))
+    }
 
     if (st && check(st)) {
         open = false
     }
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState(1)
 
+    const [random, reRandom] = useState(false)
+    const [isDis, setDis] = useState(true)
+
+    useEffect(() => {
+        setDis(!check(st))
+    }, [random])
 
     useEffect(() => {
         if (value < 0) {
@@ -52,6 +59,8 @@ export function Popup() {
             onOpen();
         }
     }, []);
+
+
 
     return (
         <div className="flex flex-col gap-2">
@@ -76,8 +85,8 @@ export function Popup() {
                                     isRequired
 
                                     // @ts-expect-error
-                                    value={value == 0 ? '' : value}
-                                    defaultValue="0"
+                                    value={value == 0 ? 1 : value}
+                                    defaultValue="1"
                                     labelPlacement="outside"
                                     placeholder="3.."
                                     isInvalid={isInvalid}
@@ -88,8 +97,21 @@ export function Popup() {
                                         setValue(value)
 
                                         setStorage('participantes', value)
-                                            /* localStorage.setItem('info', JSON.stringify(JSON.parse(JSON.stringify('info')).participantes = value));
-                                     */}}
+
+                                    }}
+                                />
+
+                                <Input
+                                    type="text"
+                                    label="¿De dónde sois?"
+                                    isRequired
+                                    labelPlacement="outside"
+                                    placeholder="Soy / somos de..."
+                                    onValueChange={(value) => {
+
+                                        setStorage('origen', value)
+
+                                    }}
                                 />
 
                                 <Select
@@ -99,10 +121,11 @@ export function Popup() {
                                     className='max-w mt-1'
                                     aria-label="promedio"
                                     key="promedio"
-                                    defaultSelectedKeys="0"
+                                    placeholder="Selecciona una..."
 
                                     onChange={(value) => {
                                         setStorage('edad-promedio', value.target.value)
+
                                     }}
                                 >
                                     <SelectItem key="0" value="Menos de 18" >Menos de 18</SelectItem>
@@ -123,9 +146,11 @@ export function Popup() {
                                     <Radio value="actividad-grupal">Actividad en grupo</Radio>
                                 </RadioGroup>
 
+
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onPress={onClose} isDisabled={!check(st)}>
+                                <Button color="primary" onPress={onClose} isDisabled={isDis
+                                }>
                                     Siguiente
                                 </Button>
                             </ModalFooter>

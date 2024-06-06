@@ -78,7 +78,7 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
     const fData = {
       section: s.urlName,
       answers: answersData1,
-      info: localStorage.getItem('info')
+      info: JSON.parse(localStorage.getItem('info') || '')
     }
 
 
@@ -118,7 +118,7 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
       if (action === 'next' && currentPage == totalPages) {
         setTimeout(() => {
           localStorage.setItem('finish_' + s.urlName + '_', '1')
-          window.location.href = '/gymkana'
+          window.location.href = '/gymkana/finalizado'
         }, 1000)
       }
 
