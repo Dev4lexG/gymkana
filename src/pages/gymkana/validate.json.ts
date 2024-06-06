@@ -6,6 +6,7 @@ import ana from '@/gymkana_analitycs.json'
 import * as fs from 'fs'
 
 import type { APIRoute } from 'astro'
+import path from 'path'
 
 // Declara el objeto `data` con un tipo específico
 const data = ana || {}
@@ -64,7 +65,7 @@ export const POST: APIRoute = async ({ request }) => {
 		console.log(data)
 
 		fs.writeFileSync(
-			'src/gymkana_analitycs.json',
+			path.resolve('gymkana_analitycs.json'),
 			JSON.stringify(data, null, 2),
 		)
 
