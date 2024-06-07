@@ -134,6 +134,8 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
     })
   }
 
+  const isFinish = localStorage.getItem(`finish_${s.urlName}_`)
+
   return (
     <>
       <form>
@@ -165,12 +167,25 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
           </>
 
         )}
-        <Button
-          onPress={() => handlePageChange(currentPage, 'next')}
-          className='min-w-6'>
-          <span dangerouslySetInnerHTML={{ __html: currentPage == totalPages ? 'Finalizar' : svg.to }}>
-          </span>
-        </Button>
+        <div className='flex flex-col gap-6'>
+
+          <Button
+            onPress={() => handlePageChange(currentPage, 'next')}
+            className='min-w-6'>
+            <span dangerouslySetInnerHTML={{ __html: currentPage == totalPages ? 'Finalizar' : svg.to }}>
+            </span>
+          </Button>
+          {isFinish && <Button
+            color='danger'
+            variant='flat'
+            onClick={(() => {
+              localStorage.removeItem(s.urlName)
+              localStorage.removeItem(`finish_${s.urlName}_`)
+              window.location.href = '/gymkana'
+            })}
+          >Borrar respuestas</Button>}
+
+        </div>
       </div>
     </>
   )

@@ -4,6 +4,24 @@ export function Finish() {
 
 	const sections = localStorage.getItem('sections')?.split(',') || '' as unknown as Array<string>
 
+	if (!sections.filter) return (
+		<>
+			<div className='text-center mt-10 mb-5'>
+				<h1 className="text-4xl">¡Has terminado esta sección! 💪</h1>
+			</div>
+			<div className='flex flex-col justify-center'>
+				<Button
+					href={'/'}
+					as={Link}
+					color='primary'
+					variant='solid'
+					className='my-4 mx-auto'
+				>
+					Volver al inicio
+				</Button>
+			</div>
+		</>
+	)
 
 	const queue = sections.filter((v) => !localStorage.getItem(`finish_${v.split('|')[0]}_`)
 	)
