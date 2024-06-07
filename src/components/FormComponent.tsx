@@ -27,7 +27,7 @@ function check(obj: object) {
 function FormComponent({ s, click }: { s: Section, click: any }) {
 
   useEffect(() => {
-    handlePageChange(currentPage, 'next')
+    //(currentPage, 'next')
   }, [click])
 
   const id = localStorage.getItem('info') ? JSON.parse(localStorage.getItem('info') || '') : ''

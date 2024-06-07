@@ -43,11 +43,11 @@ export function Popup() {
         setDis(!check(st))
     }, [random])
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (value < 0) {
             setValue(0)
         }
-    }, [value])
+    }, [value]) */
 
     const isInvalid = useMemo(() => {
         return value < 0;
@@ -85,7 +85,7 @@ export function Popup() {
                                     isRequired
 
                                     // @ts-expect-error
-                                    value={value == 0 ? 1 : value}
+                                    value={value}
                                     defaultValue="1"
                                     labelPlacement="outside"
                                     placeholder="3.."
@@ -93,12 +93,17 @@ export function Popup() {
                                     color={isInvalid ? "danger" : "default"}
                                     onValueChange={(value) => {
 
-                                        // @ts-expect-error
-                                        setValue(value)
 
-                                        setStorage('participantes', value)
+                                        if (+value > 0 || value == '') {
+                                            // @ts-expect-error
+                                            setValue(value)
 
+                                            // @ts-expect-error
+                                            setStorage('participantes', value || 1)
+
+                                        } else setValue(0)
                                     }}
+
                                 />
 
                                 <Input

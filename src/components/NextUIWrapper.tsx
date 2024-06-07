@@ -83,6 +83,9 @@ interface Accordion {
 }
 
 export function AccordionWrapper({ sections: q }: { sections: Array<Accordion> }) {
+
+    localStorage.setItem('sections', q.map((v) => { return [v.urlName, v.section].toString().replace(',', '|') }).toString())
+
     return (
         <Accordion variant="bordered" className='my-4'>
             {q.map((s, index) => {
