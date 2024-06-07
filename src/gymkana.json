@@ -99,8 +99,12 @@
 				"difficulty": 2
 			},
 			{
-				"question": "¿Cuántos parajes naturales rodean Aroche?",
-				"answers": ["*2", "4", "5"],
+				"question": "¿Cuáles son los parajes naturales que rodean Aroche?",
+				"answers": [
+					"*Sierra Pelada, Ribera del Aserrador y Las Peñas",
+					"Sierra Pelada, Ribera del Aserrador, Las Peñas, Monteblanco y Andevalo",
+					"Sierra Pelada, Ribera del Aserrador, Las Peñas, Monteblanco, Andevalo y Vivían"
+				],
 				"difficulty": 2
 			},
 			{
