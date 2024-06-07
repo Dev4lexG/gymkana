@@ -49,6 +49,7 @@ export function Selection({ question: q, section: s, isCorrect }: { question: Se
     return (
         <>
             <Select
+                isMultiline={true}
                 isRequired={q.required ?? true}
                 placeholder={q.placeholder ?? 'Selecciona una opción'}
                 className='max-w-xs mt-1'
