@@ -122,15 +122,6 @@
 				"difficulty": 2
 			},
 			{
-				"question": "Aroche linda con 7 pueblos. ¿Cuáles son?",
-				"answers": [
-					"*Encinasola, La Nava, Cumbres de San Bartolomé, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera",
-					"Encinasola, La Nava, Aracena, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera",
-					"Encinasola, La Nava, Lepe, Cortegana, Almonaster, Cabezas Rubias y Rosal de la Frontera"
-				],
-				"difficulty": 2
-			},
-			{
 				"question": "¿Cuál es el pico más alto del término de Aroche?",
 				"answers": ["*Pico Ballesteros", "Pico del Buitre", "Las Peñas"],
 				"difficulty": 2
