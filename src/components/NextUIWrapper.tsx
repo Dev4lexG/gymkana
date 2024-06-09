@@ -90,14 +90,29 @@ export function AccordionWrapper({ sections: q }: { sections: Array<Accordion> }
         <Accordion variant="bordered" className='my-4'>
             {q.map((s, index) => {
                 const completed = localStorage.getItem('finish_' + s.urlName + '_') == '1'
+
+                const datas = localStorage.getItem('__' + s.urlName) && JSON.parse(localStorage.getItem('__' + s.urlName) || '')
+                const sd = {
+                    good: datas?.good,
+                    errors: datas?.errors
+                }
                 return (
                     <AccordionItem key={index} aria-label={s.section} title={s.section}
-                        startContent={'|' /* TODO: color */}
+                        startContent={'|'}
                         classNames={{
                             subtitle: completed ? "text-success" : "text-warning",
                             startContent: completed ? "text-success" : "text-warning"
                         }}
-                        subtitle={completed ? 'Completado' : 'Incompleto'}
+                        subtitle={
+                            <>
+                                {completed ? 'Completado' : 'Incompleto'}
+                                <span className='text-white'>
+                                    {(sd?.good || sd?.errors) && <>&nbsp;Totales -</>}
+                                    {sd?.good ? <>&nbsp;| Aciertos: <span className='text-success'>{sd.good}</span></> : ''}
+                                    {sd?.errors ? <>&nbsp;| Errores: <span className='text-danger'>{sd.errors}</span></> : ''}
+                                </span>
+                            </>
+                        }
                     >
                         Preguntas:
                         <ul className='list-disc pl-5 mt-1 mb-3'>
@@ -124,6 +139,6 @@ export function AccordionWrapper({ sections: q }: { sections: Array<Accordion> }
                     </AccordionItem>
                 )
             })}
-        </Accordion>
+        </Accordion >
     )
 }

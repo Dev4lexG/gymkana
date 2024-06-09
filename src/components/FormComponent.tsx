@@ -1,4 +1,4 @@
-import { Button, Link, Pagination } from '@nextui-org/react'
+import { Button, Pagination } from '@nextui-org/react'
 import { Selection } from '@/components/NextUIWrapper'
 
 import { useEffect, useState } from 'react'
@@ -25,6 +25,10 @@ function check(obj: object) {
 }
 
 function FormComponent({ s, click }: { s: Section, click: any }) {
+
+  if (!localStorage.getItem('__' + s.urlName)) {
+    localStorage.setItem('__' + s.urlName, JSON.stringify({ errors: 0, good: 0, tryed: 0 }))
+  }
 
   useEffect(() => {
     //(currentPage, 'next')
@@ -73,14 +77,14 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
 
     const answersData1 = localData1['answers']
 
-
+    const localErrors = localStorage.getItem('__' + s.urlName) && JSON.parse(localStorage.getItem('__' + s.urlName) || '')
 
     const fData = {
       section: s.urlName,
       answers: answersData1,
+      errors: localErrors,
       info: JSON.parse(localStorage.getItem('info') || '')
     }
-
 
     if (action === 'next' && page < totalPages) {
       page++;
@@ -109,6 +113,19 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
       }, {});
 
       setValidationData(data)
+
+      const errData = JSON.parse(localStorage.getItem('__' + s.urlName) || '')
+
+      Object.values(currr).forEach(val => {
+        if (val === false) {
+          errData.errors++
+        } else if (val === true) {
+          errData.good++
+        }
+      })
+      errData.tryed++
+
+      localStorage.setItem('__' + s.urlName, JSON.stringify(errData))
 
       if (Object.values(currr).some(value => Boolean(!value))) {
         localStorage.removeItem('finish_' + s.urlName + '_')
@@ -153,7 +170,11 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
         {totalPages !== 1 && (
           <>
 
-            <Button onPress={() => handlePageChange(currentPage, 'prev')} className='min-w-6' disabled={currentPage == 1}><span dangerouslySetInnerHTML={{ __html: svg.back }}></span></Button>
+            <Button
+              onPress={() => handlePageChange(currentPage, 'prev')}
+              className='min-w-6'
+              disabled={currentPage == 1}
+            ><span dangerouslySetInnerHTML={{ __html: svg.back }}></span></Button>
 
             <Pagination
               isCompact
