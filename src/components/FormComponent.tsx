@@ -19,7 +19,7 @@ const svg = {
 }
 
 function check(obj: object) {
-  const keys = ['uid', 'participantes', 'edad-promedio', 'motivacion'];
+  const keys = ['uid', 'participantes', 'edad-promedio'];
   return keys.every(key => key in obj);
 
 }
@@ -126,6 +126,16 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
       errData.tryed++
 
       localStorage.setItem('__' + s.urlName, JSON.stringify(errData))
+
+      fData.errors = errData
+
+      fetch('/gymkana/validate.json', {
+        method: 'POST',
+        body: JSON.stringify({ ...fData, action: 'update' }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
 
       if (Object.values(currr).some(value => Boolean(!value))) {
         localStorage.removeItem('finish_' + s.urlName + '_')

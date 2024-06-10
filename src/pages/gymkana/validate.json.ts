@@ -6,7 +6,6 @@ import normalize from '@/utils/normalize'
 import type { APIRoute } from 'astro'
 
 // Declara el objeto `data` con un tipo específico
-let data = {}
 
 const sections = q.reduce((acc, curr) => {
 	// @ts-expect-error
@@ -16,6 +15,7 @@ const sections = q.reduce((acc, curr) => {
 
 export const POST: APIRoute = async ({ request }) => {
 	if (request.headers.get('Content-Type') === 'application/json') {
+		let data = {}
 		const body = await request.json()
 
 		const INFO = body.info
@@ -38,41 +38,35 @@ export const POST: APIRoute = async ({ request }) => {
 
 			return ANSWERS
 		}, {})
-
-		// @ts-expect-error
-		if (INFO && !data[INFO.uid]) {
+		if (body.action == 'update') {
 			// @ts-expect-error
-			data[INFO.uid] = {
-				participantes: INFO.participantes,
-				'edad-promedio': INFO['edad-promedio'],
-				origen: INFO.origen,
-				motivacion: INFO.motivacion,
+			if (INFO && !data[INFO.uid]) {
+				// @ts-expect-error
+				data[INFO.uid] = {
+					participantes: INFO.participantes,
+					'edad-promedio': INFO['edad-promedio'],
+					origen: INFO.origen,
+				}
 			}
-		}
 
-		Object.values(response).forEach((val) => {
-			if (val === false) {
-				body.errors['errors']++
-			} else if (val === true) {
-				body.errors['good']++
+			/* Object.values(response).forEach((val) => {
+	if (val === false) {
+		body.errors['errors']++
+		} else if (val === true) {
+			body.errors['good']++
 			}
-		})
-		body.errors['tryed']++
-
-		// @ts-expect-error
-		data[INFO.uid][sections[SECTION]] = body.errors
-
-		// @ts-expect-error
-		const dat = data[INFO.uid]
-
-		dat['uid'] = INFO.uid
-
-		insertUID(dat)
-			.then((v) => {
-				data = v
 			})
-			.catch(console.error)
+			body.errors['tryed']++ */
+			// @ts-expect-error
+			data[INFO.uid][sections[SECTION]] = body.errors
 
+			// @ts-expect-error
+			const dat = data[INFO.uid]
+
+			dat['uid'] = INFO.uid
+
+			insertUID(dat).catch(console.error)
+		}
 		return new Response(JSON.stringify(response), {
 			headers: {
 				'content-type': 'application/json;charset=UTF-8',

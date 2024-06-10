@@ -6,7 +6,6 @@ const svg = {
 }
 
 function SectionPagination({ current: id, click }: { current: number, click: any }) {
-    q[id]
     return (
         <ButtonGroup className="mx-auto w-[fit-content] flex">
             <Button onClick={click} isDisabled={q[id - 1] === undefined} href={'/gymkana/' + q[id - 1]?.urlName}

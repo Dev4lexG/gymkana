@@ -44,6 +44,9 @@ importers:
       google-spreadsheet:
         specifier: ^4.1.2
         version: 4.1.2(google-auth-library@9.10.0)
+      p-queue:
+        specifier: ^8.0.1
+        version: 8.0.1
       react:
         specifier: ^18.3.1
         version: 18.3.1

@@ -14,7 +14,7 @@ function generateUID(length: number): string {
 function check(obj: object | string) {
     if (typeof (obj) == 'string')
         obj = {}
-    const keys = ['uid', 'participantes', 'edad-promedio', 'motivacion', 'origen'];
+    const keys = ['uid', 'participantes', 'edad-promedio', 'origen'];
     return keys.every(key => key in obj);
 
 }
@@ -138,19 +138,6 @@ export function Popup() {
                                     <SelectItem key="36" value="36-50" >36-50</SelectItem>
                                     <SelectItem key="50" value="Más de 50" >Más de 50</SelectItem>
                                 </Select>
-
-                                <RadioGroup
-                                    isRequired
-                                    label={<span className="text-foreground text-small">¿Qué te motiva más a participar en la gymkana?</span>}
-                                    onValueChange={(value) => {
-                                        setStorage('motivacion', value)
-                                    }}
-                                >
-                                    <Radio value="diversion">Diversión</Radio>
-                                    <Radio value="competencia">Competencia</Radio>
-                                    <Radio value="actividad-grupal">Actividad en grupo</Radio>
-                                </RadioGroup>
-
 
                             </ModalBody>
                             <ModalFooter>

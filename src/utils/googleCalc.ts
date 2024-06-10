@@ -1,5 +1,6 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet'
 import { JWT } from 'google-auth-library'
+import PQueue from 'p-queue'
 
 import { config as loadEnv } from 'dotenv'
 
@@ -20,7 +21,7 @@ const sections = config.reduce((acc, curr) => {
 	return acc
 }, {})
 
-const RowB = ['uid', 'participantes', 'edad-promedio', 'origen', 'motivacion']
+const RowB = ['uid', 'participantes', 'edad-promedio', 'origen']
 
 config.forEach((s) => {
 	RowB.push(s.section)
@@ -41,10 +42,30 @@ interface uid {
 	participantes: number
 	'edad-promedio': number
 	origen: string
-	motivacion: string
 }
 
+let init = false
+let RowwB
+async function isInit() {
+	if (init) return
+	await doc.loadInfo()
+
+	const sheet = doc.sheetsById[parseInt(process.env.SHEET || '')]
+
+	await sheet.setHeaderRow(RowA, 1)
+	RowwB = await sheet.setHeaderRow(RowB, 2)
+	init = true
+	return
+}
+
+const queue = new PQueue({ interval: 60000, intervalCap: 20 })
 export async function insertUID(dat: uid) {
+	return queue.add(() => insertUIDq(dat))
+}
+
+async function insertUIDq(dat: uid) {
+	await isInit()
+	console.log('runn')
 	const data = { ...dat }
 	for (const key in sections) {
 		// @ts-expect-error
@@ -56,9 +77,6 @@ export async function insertUID(dat: uid) {
 	await doc.loadInfo()
 
 	const sheet = doc.sheetsById[parseInt(process.env.SHEET || '')]
-
-	await sheet.setHeaderRow(RowA, 1)
-	await sheet.setHeaderRow(RowB, 2)
 
 	const rows = await sheet.getRows()
 
