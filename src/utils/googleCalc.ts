@@ -79,7 +79,7 @@ async function insertUIDq(dat: uid) {
 
 	const rows = await sheet.getRows()
 
-	console.info('ROWS', rows.lenght)
+	console.info('ROWS', rows.length)
 
 	sheet.mergeCells({
 		startRowIndex: 0,
