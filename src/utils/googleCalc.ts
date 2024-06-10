@@ -62,12 +62,19 @@ const queue = new PQueue({ interval: 5000, intervalCap: 1 })
 export async function insertUID(dat: uid) {
 	console.info('SHEETID')
 	console.info(process.env.SHEET)
-	return queue.add(() => insertUIDq(dat))
+	console.info('SECRET')
+	console.info(process.env.SECRET)
+	console.info('MAIL')
+	console.info(process.env.MAIL)
+	console.info('DOC')
+	console.info(process.env.DOC)
+	
+	return queue.add(() => insertUIDq(dat).catch(err => console.error(err)
 }
 
 async function insertUIDq(dat: uid) {
 	await isInit()
-	console.log('runn')
+	console.info('runn')
 	const data = { ...dat }
 	for (const key in sections) {
 		// @ts-expect-error
