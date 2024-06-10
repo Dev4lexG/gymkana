@@ -10,7 +10,7 @@ import { gymkana as config } from '@/utils/config'
 
 const jwt = new JWT({
 	email: process.env.MAIL,
-	key: (process.env.SECRET || '').replace(/\\n/g, '\n'),
+	key: (process.env.SECRET || '') /*.replace(/\\n/g, '\n')*/,
 	scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 })
 const doc = new GoogleSpreadsheet(process.env.DOC || '', jwt)
