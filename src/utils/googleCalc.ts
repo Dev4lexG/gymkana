@@ -58,7 +58,7 @@ async function isInit() {
 	return
 }
 
-const queue = new PQueue({ interval: 60000, intervalCap: 20 })
+const queue = new PQueue({ interval: 5000, intervalCap: 1 })
 export async function insertUID(dat: uid) {
 	return queue.add(() => insertUIDq(dat))
 }
