@@ -2,9 +2,9 @@ import { GoogleSpreadsheet } from 'google-spreadsheet'
 import { JWT } from 'google-auth-library'
 import PQueue from 'p-queue'
 
-import { config as loadEnv } from 'dotenv'
+// import { config as loadEnv } from 'dotenv'
 
-loadEnv()
+// loadEnv()
 
 import { gymkana as config } from '@/utils/config'
 
