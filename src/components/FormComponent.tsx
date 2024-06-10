@@ -116,19 +116,23 @@ function FormComponent({ s, click }: { s: Section, click: any }) {
 
       const errData = JSON.parse(localStorage.getItem('__' + s.urlName) || '')
 
+      let changed = false
       Object.values(currr).forEach(val => {
         if (val === false) {
           errData.errors++
+          changed = true
         } else if (val === true) {
           errData.good++
+          changed = true
         }
       })
-      errData.tryed++
+      changed && errData.tryed++
 
       localStorage.setItem('__' + s.urlName, JSON.stringify(errData))
 
       fData.errors = errData
 
+      if (changed)
       fetch('/gymkana/validate.json', {
         method: 'POST',
         body: JSON.stringify({ ...fData, action: 'update' }),
