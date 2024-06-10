@@ -69,7 +69,7 @@ export async function insertUID(dat: uid) {
 	console.info('DOC')
 	console.info(process.env.DOC)
 	
-	return queue.add(() => insertUIDq(dat).catch(err => console.error(err)
+	return queue.add(() => insertUIDq(dat).catch(err => console.error(err)))
 }
 
 async function insertUIDq(dat: uid) {
