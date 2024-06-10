@@ -60,8 +60,8 @@ async function isInit() {
 
 const queue = new PQueue({ interval: 5000, intervalCap: 1 })
 export async function insertUID(dat: uid) {
-	console.log('SHEETID')
-	console.log(process.env.SHEET)
+	console.info('SHEETID')
+	console.info(process.env.SHEET)
 	return queue.add(() => insertUIDq(dat))
 }
 
