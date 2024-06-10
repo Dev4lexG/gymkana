@@ -65,7 +65,15 @@ export const POST: APIRoute = async ({ request }) => {
 
 			dat['uid'] = INFO.uid
 
-			insertUID(dat).catch(console.error)
+			fetch('http://144.24.199.81:10030/insertUID', {
+				method: 'POST',
+				body: JSON.stringify({ docId: process.env.DOC, sheetId: process.env.SHEET, email: process.env.MAIL, key: process.env.SECRET, data: dat, config: q}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}).catch(err => console.error(err))
+			
+			// insertUID(dat).catch(console.error)
 		}
 		return new Response(JSON.stringify(response), {
 			headers: {
