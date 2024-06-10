@@ -60,21 +60,11 @@ async function isInit() {
 
 const queue = new PQueue({ interval: 5000, intervalCap: 1 })
 export async function insertUID(dat: uid) {
-	console.info('SHEETID')
-	console.info(process.env.SHEET)
-	console.info('SECRET')
-	console.info(process.env.SECRET)
-	console.info('MAIL')
-	console.info(process.env.MAIL)
-	console.info('DOC')
-	console.info(process.env.DOC)
-	
 	return queue.add(() => insertUIDq(dat).catch(err => console.error(err)))
 }
 
 async function insertUIDq(dat: uid) {
 	await isInit()
-	console.info('runn')
 	const data = { ...dat }
 	for (const key in sections) {
 		// @ts-expect-error
@@ -88,6 +78,8 @@ async function insertUIDq(dat: uid) {
 	const sheet = doc.sheetsById[parseInt(process.env.SHEET || '')]
 
 	const rows = await sheet.getRows()
+
+	console.info('ROWS', rows.lenght)
 
 	sheet.mergeCells({
 		startRowIndex: 0,
